@@ -243,6 +243,24 @@
         }
 
         /* Message Input Styles */
+        .message-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message-option {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .message-option:hover {
+            background-color: #e0e0e0;
+        }
+
         .message-input {
             display: flex;
             align-items: center;
@@ -274,24 +292,7 @@
         }
 
         /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .fab i {
-            color: #3498db;
-            font-size: 24px;
-        }
+        /* Removed the plus sign button */
     </style>
 </head>
 <body>
@@ -308,7 +309,6 @@
         <div class="user-controls">
             <i class="fas fa-bell"></i>
             <i class="fas fa-cog"></i>
-            <div class="avatar"></div>
         </div>
     </header>
 
@@ -391,6 +391,12 @@
             </div>
         </div>
 
+        <div class="message-options">
+            <div class="message-option">Quick Reply</div>
+            <div class="message-option">Suggest Date</div>
+            <div class="message-option">Share Location</div>
+        </div>
+
         <div class="message-input">
             <div class="input-options">
                 <i class="fas fa-smile"></i>
@@ -403,11 +409,6 @@
             </button>
         </div>
     </main>
-
-    <!-- Floating Action Button -->
-    <div class="fab">
-        <i class="fas fa-plus"></i>
-    </div>
 
     <script>
         // JavaScript functionality
@@ -453,6 +454,14 @@
             const suggestButton = document.querySelector('.suggestion-note');
             suggestButton.addEventListener('click', function() {
                 alert('AI date suggestion generated based on user preferences!');
+            });
+
+            // Add click handlers for message options
+            const messageOptions = document.querySelectorAll('.message-option');
+            messageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    alert(`Clicked ${this.textContent}`);
+                });
             });
         });
     </script>
